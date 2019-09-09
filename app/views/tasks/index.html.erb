@@ -18,6 +18,7 @@
         <td><%= task.content %></td>
         <td><%= link_to 'Show', task %></td>
         <td><%= link_to 'Edit', edit_task_path(task) %></td>
+        <td><%= link_to 'sort by expiration date', tasks_path (deadline: 'true')%></td>
         <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
