@@ -15,5 +15,19 @@ module EverlifeTask
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
+   
+    config.time_zone = 'Japan'
+    config.active_record.default_timezone = :local
+    config.factory_bot.definition_file_paths = ["custom/factories"]
+    config.generators do |g|
+    g.test_framework :rspec,
+                     fixtures: true,
+                     view_specs: false,
+                     helper_specs: false,
+                     routing_specs: false,
+                     controller_specs: false,
+                     request_specs: false
+    g.fixture_replacement :factory_bot, dir: "spec/factories"
   end
+ end  
 end
