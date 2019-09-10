@@ -9,7 +9,7 @@ class TasksController < ApplicationController
     elsif params[:term]
       @tasks = Task.where('tittle LIKE ?', "%#{params[:term]}%").order('id ASC')
     else
-      @tasks = Task.order('status DESC') 
+      @tasks = Task.order('status DESC').page(params[:page])
     end
   end
 
