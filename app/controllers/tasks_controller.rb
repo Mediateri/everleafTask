@@ -9,7 +9,7 @@ class TasksController < ApplicationController
     elsif params[:term]
       @tasks = Task.where('tittle LIKE ?', "%#{params[:term]}%").order('id ASC')
     else
-      @tasks = Task.order('created_at ASC') 
+      @tasks = Task.order('status DESC') 
     end
   end
 
@@ -59,6 +59,6 @@ class TasksController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def task_params
-      params.require(:task).permit(:tittle, :content, :deadline, :term)
+      params.require(:task).permit(:tittle, :content, :deadline, :term, :status)
     end
 end
