@@ -4,7 +4,11 @@ class TasksController < ApplicationController
 
   # GET /tasks
   def index
-    @tasks = Task.order('created_at ASC') 
+    if params[:sort_expired]
+      @tasks = Task.order('deadline DESC')
+    else
+      @tasks = Task.order('created_at ASC') 
+    end
   end
 
   # GET /tasks/1
@@ -39,7 +43,6 @@ class TasksController < ApplicationController
       render :edit
     end
   end
-
   # DELETE /tasks/1
   def destroy
     @task.destroy

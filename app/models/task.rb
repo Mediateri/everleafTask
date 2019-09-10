@@ -1,4 +1,4 @@
 class Task < ApplicationRecord
     belongs_to :user
-    validates :Tittle, presence: true
+    validates :tittle, presence: true
 end
