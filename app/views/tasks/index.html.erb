@@ -1,34 +1,17 @@
-<%= form_tag(tasks_path, method: :get) do %>
-  <%= text_field_tag :term, params[:term] %>
-  <%= submit_tag 'Search' %>
-<% end %>
+
 <p id="notice"><%= notice %></p>
-
-<h1>Tasks</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Tittle</th>
-      <th>Content</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
+<h4>Tasks</h4>
     <% @tasks.each do |task| %>
-      <tr>
-        <td><%= task.tittle %></td>
-        <td><%= task.content %></td>
-        <td><%= link_to 'Show', task %></td>
-        <td><%= link_to 'Edit', edit_task_path(task) %></td>
-        <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+      <div class='card'>
+        <div class="card-body">
+          <p><%= task.tittle %>
+          <%= task.content %></p>
+          <p><%= link_to 'Show', task %>
+          <%= link_to 'Edit', edit_task_path(task) %>
+          <%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+        </div>
+      </div><br />
     <% end %>
-  </tbody>
-</table>
-
 <br>
-
 <p><%= link_to 'New Task', new_task_path %> <%= link_to 'sort by expiration date', tasks_path(sort_expired: 'true')%></p>
 <%= paginate @tasks %>

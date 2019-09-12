@@ -5,9 +5,9 @@ class TasksController < ApplicationController
   # GET /tasks
   def index
     if params[:sort_expired]
-      @tasks = Task.order('deadline DESC')
+      @tasks = Task.order('deadline DESC').page(params[:page])
     elsif params[:term]
-      @tasks = Task.where('tittle LIKE ?', "%#{params[:term]}%").order('id ASC')
+      @tasks = Task.where('tittle LIKE ?', "%#{params[:term]}%").order('id ASC').page(params[:page])
     else
       @tasks = Task.order('status DESC').page(params[:page])
     end

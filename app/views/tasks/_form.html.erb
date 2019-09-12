@@ -2,7 +2,6 @@
   <% if task.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(task.errors.count, "error") %> prohibited this task from being saved:</h2>
-
       <ul>
       <% task.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -10,17 +9,14 @@
       </ul>
     </div>
   <% end %>
-
   <div class="field">
     <%= form.label :tittle %>
     <%= form.text_field :tittle %>
   </div>
-
   <div class="field">
     <%= form.label :content %>
     <%= form.text_area :content %>
   </div>
-
   <div class="field">
     <%= form.label :Deadline %>
     <%= form.date_field :deadline %>
@@ -30,7 +26,6 @@
       <%= form.radio_button :status, 'low' %> low  <%= form.radio_button :status, 'medium' %> medium <%= form.radio_button :status, 'high' %> high<br />
     </p>
   </div>
-
   <div class="actions">
     <%= form.submit %>
   </div>
