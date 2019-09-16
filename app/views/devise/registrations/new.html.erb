@@ -1,8 +1,8 @@
 <h2>Sign up</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <div class="form-group">
-    <%= render "devise/shared/error_messages", resource: resource %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+    <div class="form-group">
     <div class="field">
       <%= f.label :name %>
       <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "form-control" %>
@@ -27,7 +27,7 @@
  
     <div class="field">
       <%= f.label :Role %>
-      <%= f.radio_button :admin, 'true' %>admin
+      <%= f.radio_button :admin, 'true' %> Admin
     </div>
 
 

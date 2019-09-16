@@ -45,9 +45,8 @@
     <% else %>
       <%= link_to "login", new_user_session_path %>
     <% end %>
-    <%= t('view.sample') %>
     <div class="row">
-      <div class="col-sm-2"></div>
+      <div class="col-sm-2"><%= t('view.hello_world') %></div>
         <div class="col-sm-8"><%= yield %></div>
       <div class="col-sm-2"></div>
     </div>
