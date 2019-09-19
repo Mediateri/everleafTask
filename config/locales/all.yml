@@ -1,3 +1,14 @@
   all:
     view:
       welcome: this page was made for you so enjoy
+<<<<<<< HEAD
+=======
+    activerecord:
+      errors:
+        models:
+          task:
+            attributes:
+              tittle:
+                blank: "There were problems with the following fields:"
+
+>>>>>>> a33c0100f2905ba54b98b0875ae24c8e12c728e3

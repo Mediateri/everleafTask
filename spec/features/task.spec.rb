@@ -1,3 +1,5 @@
+
+
 require 'rails_helper'
 
 RSpec.feature "Task management function", type: :feature do
@@ -56,7 +58,7 @@ RSpec.feature "Task management function", type: :feature do
   end
   scenario 'task ascending buy date' do
     task=Task.all
-    assert task.sorted_by?(:created_at)
+    assert task.order('created_at DESC')
   end
   scenario 'task must be true' do
     visit  root_path 
