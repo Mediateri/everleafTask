@@ -1,0 +1,11 @@
+  all:
+    view:
+      welcome: this page was made for you so enjoy
+    activerecord:
+      errors:
+        models:
+          task:
+            attributes:
+              tittle:
+                blank: "There were problems with the following fields:"
+
