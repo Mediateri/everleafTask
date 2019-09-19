@@ -1,5 +1,5 @@
-| users          | profile      | tasks        |
+| users          | labels       | tasks        |
 | :------------- | :----------: | -----------: |
-| name           |   image      | title        |
-| email          |   user       | content      |
+| name           |   name       | title        |
+| email          |   user_id    | content      |
 | passwrod       |              | user         |
