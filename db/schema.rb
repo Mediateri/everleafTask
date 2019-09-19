@@ -10,10 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_10_141913) do
+ActiveRecord::Schema.define(version: 2019_09_19_081305) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "labelings", force: :cascade do |t|
+    t.bigint "label_id"
+    t.bigint "task_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["label_id"], name: "index_labelings_on_label_id"
+    t.index ["task_id"], name: "index_labelings_on_task_id"
+  end
+
+  create_table "labels", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "labeler"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_labels_on_user_id"
+  end
 
   create_table "tasks", force: :cascade do |t|
     t.string "tittle", null: false
@@ -23,6 +40,7 @@ ActiveRecord::Schema.define(version: 2019_09_10_141913) do
     t.bigint "user_id"
     t.date "deadline", default: -> { "now()" }, null: false
     t.integer "status", default: 0
+    t.string "labels"
     t.index ["tittle"], name: "index_tasks_on_tittle", unique: true
     t.index ["user_id"], name: "index_tasks_on_user_id"
   end
@@ -41,5 +59,8 @@ ActiveRecord::Schema.define(version: 2019_09_10_141913) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "labelings", "labels"
+  add_foreign_key "labelings", "tasks"
+  add_foreign_key "labels", "users"
   add_foreign_key "tasks", "users"
 end
