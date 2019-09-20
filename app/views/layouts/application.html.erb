@@ -29,7 +29,7 @@
             <ul class="navbar-nav mr-auto">
               <li class="nav-item">
                 <%= link_to "logout", destroy_user_session_path, method: :delete, class: 'nav_link' %>
-                <%= link_to 'New Label', new_label_path %>
+                <%= link_to 'Labels', labels_path %>
               </li>
             </ul>
             <%= form_tag(tasks_path, method: :get) do  %>

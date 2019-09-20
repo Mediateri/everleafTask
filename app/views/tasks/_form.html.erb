@@ -27,6 +27,12 @@
       <%= form.radio_button :status, 'low' %> low  <%= form.radio_button :status, 'medium' %> medium <%= form.radio_button :status, 'high' %> high<br />
     </p>
   </div>
+  <div class="field">
+  <p><%Label.all.each do |label| %>
+   <%=form.check_box :labels, {multiple: true, checked: label[:checked], disabled: label[:disabled], include_hidden: false }, label[:id] %>
+   <label ><%= label.labeler %></label>
+  <% end %> </p>
+</div>
   <div class="actions">
     <%= form.submit %>
   </div>
