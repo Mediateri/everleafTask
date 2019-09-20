@@ -14,7 +14,7 @@ class LabelsController < ApplicationController
 
   # GET /labels/new
   def new
-    @label = current_user.tasks.build
+    @label = current_user.labels.build
   end
 
   # GET /labels/1/edit
@@ -24,7 +24,7 @@ class LabelsController < ApplicationController
   # POST /labels
   # POST /labels.json
   def create
-    @label = current_user.tasks.build(label_params)
+    @label = current_user.labels.build(label_params)
 
     respond_to do |format|
       if @label.save
