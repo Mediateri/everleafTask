@@ -7,7 +7,7 @@ class TasksController < ApplicationController
     if params[:sort_expired]
       @tasks = Task.order('deadline DESC').page(params[:page])
     elsif params[:term]
-      @tasks = Task.where('tittle or LIKE ? or tittle or LIKE ? ', "%#{params[:term]}%", "%#{params[:term]}%").order('id ASC').page(params[:page])
+      @tasks = Task.where('tittle or LIKE ? or statuses or LIKE ? ', "%#{params[:term]}%", "%#{params[:term]}%").order('id ASC').page(params[:page])
     else
       @tasks = Task.order('created_at DESC').page(params[:page])
     end
