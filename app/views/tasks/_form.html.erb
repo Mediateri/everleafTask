@@ -29,8 +29,10 @@
   </div>
   <div class="field">
   <p><%Label.all.each do |label| %>
-   <%=form.check_box :labels, {multiple: true, checked: label[:checked], disabled: label[:disabled], include_hidden: false }, label[:id] %>
-   <label ><%= label.labeler %></label>
+    <% if label.user_id == current_user.id || label.user_id.blank?%>
+      <%=form.check_box :labels, {multiple: true, checked: label[:checked], disabled: label[:disabled], include_hidden: false }, label[:id] %>
+      <label ><%= label.labeler %></label>
+    <%end%>
   <% end %> </p>
 </div>
   <div class="actions">
