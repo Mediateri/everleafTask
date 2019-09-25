@@ -1,5 +1,6 @@
 class TasksController < ApplicationController
-  before_action :authenticate_user!
+  # before_action :authenticate_user!
+  before_action :logged_in?
   before_action :set_task, only: [:show, :edit, :update, :destroy]
 
   # GET /tasks
@@ -59,6 +60,6 @@ class TasksController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def task_params
-      params.require(:task).permit(:tittle, :content, :deadline, :term, :status, :statuses)
+      params.require(:task).permit(:tittle, :content, :deadline, :term, :status, :statuses, :admin)
     end
 end

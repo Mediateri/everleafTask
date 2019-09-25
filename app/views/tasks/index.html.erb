@@ -13,5 +13,6 @@
       </div><br />
     <% end %>
 <br>
-<p><%= link_to 'New Task', new_task_path %> <%= link_to 'sort by expiration date', tasks_path(sort_expired: 'true')%></p>
+<p><%= link_to 'New Task', new_task_path %> 
+<%= link_to 'sort by expiration date', tasks_path(sort_expired: 'true')%></p>
 <%= paginate @tasks %>

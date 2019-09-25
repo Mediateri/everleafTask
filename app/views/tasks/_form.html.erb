@@ -31,7 +31,13 @@
     <%= form.radio_button :statuses, 'Not_started' %> Not_started  <%= form.radio_button :statuses, 'Undertaking' %> Undertaking <%= form.radio_button :statuses, 'Completed' %> Completed<br />
   </p>
 </div>
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+
+<div class="field">
+  <% if logged_in? %>
+    <%= form.hidden_field :user_id, value: current_user.id %>
+  <% end %>
+</div>
+<div class="actions">
+  <%= form.submit %>
+</div>
 <% end %>
