@@ -1,4 +1,6 @@
 ja:
+  view:
+    sample: Sample
   activerecord:
     errors:
       messages:
