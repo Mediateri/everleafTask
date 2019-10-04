@@ -13,7 +13,7 @@ RSpec.describe Task, type: :model do
   end
 
   it "validation passes If content is described in title and content" do
-    task = Task.new(tittle: 'test', content: 'Failure test')
-    expect(task).to be_valid
+    task = Task.new(tittle: 'vv', content: 'Failure test')
+    expect(task).not_to be_valid
   end
 end
