@@ -8,10 +8,12 @@ RSpec.describe Task, type: :model do
   end
 
   it "Validation does not pass if content is empty" do
-    # Describe the contents here
+    task = Task.new(tittle: 'test', content: '')
+    expect(task).not_to be_valid
   end
 
   it "validation passes If content is described in title and content" do
-    # Describe the contents here
+    task = Task.new(tittle: 'test', content: 'Failure test')
+    expect(task).to be_valid
   end
 end
