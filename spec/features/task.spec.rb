@@ -60,7 +60,7 @@ RSpec.feature "Task management function", type: :feature do
     task=Task.all
     assert task.order('created_at DESC')
   end
-  scenario 'task ascending buy date' do
+  scenario 'task ascending buy priority' do
     task=Task.all
      # status is column that is holding priority High,medium and finally low
     assert task.order('status DESC')
