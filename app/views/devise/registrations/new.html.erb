@@ -1,4 +1,5 @@
 <%= t('view.sample') %>
+<div class="jumbotron">
 <h2>Sign up</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
@@ -33,9 +34,10 @@
 
 
     <div class="actions">
-      <%= f.submit "Sign up" %>
+      <%= f.submit "Sign up",  class:"btn btn-primary" %>
     </div>
   </div>
 <% end %>
 
 <%= render "devise/shared/links" %>
+</div>
