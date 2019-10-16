@@ -13,5 +13,5 @@
       </div><br />
     <% end %>
 <br>
-<p><%= link_to 'New Task', new_task_path %> <%= link_to 'sort by expiration date', tasks_path(sort_expired: 'true')%><%= link_to 'sort by priority', tasks_path(sort_priority: 'true')%></p>
+<p><%= link_to 'New Task', new_task_path, class: 'btn btn-outline-primary' %> <%= link_to 'sort by expiration date', tasks_path(sort_expired: 'true'), class: 'btn btn-outline-primary' %> <%= link_to 'sort by priority', tasks_path(sort_priority: 'true'), class: 'btn btn-outline-primary'%></p>
 <%= paginate @tasks %>
