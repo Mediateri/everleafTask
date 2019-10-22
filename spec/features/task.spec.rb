@@ -60,6 +60,11 @@ RSpec.feature "Task management function", type: :feature do
     task=Task.all
     assert task.order('created_at DESC')
   end
+  scenario 'task ascending buy priority' do
+    task=Task.all
+     # status is column that is holding priority High,medium and finally low
+    assert task.order('status DESC')
+  end
   scenario 'task must be true' do
     visit  root_path 
     fill_in  'Email' ,  with: 'Foo@gmail.Com' 

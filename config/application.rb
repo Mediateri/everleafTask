@@ -19,6 +19,7 @@ module EverlifeTask
     config.time_zone = 'Japan'
     config.active_record.default_timezone = :local
     config.factory_bot.definition_file_paths = ["custom/factories"]
+    config.i18n.default_locale = :ja
     config.generators do |g|
     g.test_framework :rspec,
                      fixtures: true,
@@ -28,7 +29,6 @@ module EverlifeTask
                      controller_specs: false,
                      request_specs: false
     g.fixture_replacement :factory_bot, dir: "spec/factories"
-    config.i18n.default_locale = :all
   end
  end  
 end

@@ -1,4 +1,4 @@
-
+<%= t('view.sample') %>
 <p id="notice"><%= notice %></p>
 <h4>Tasks</h4>
     <% @tasks.each do |task| %>
@@ -15,4 +15,5 @@
 <br>
 <p><%= link_to 'New Task', new_task_path %> 
 <%= link_to 'sort by expiration date', tasks_path(sort_expired: 'true')%></p>
+<p><%= link_to 'New Task', new_task_path, class: 'btn btn-outline-primary' %> <%= link_to 'sort by expiration date', tasks_path(sort_expired: 'true'), class: 'btn btn-outline-primary' %> <%= link_to 'sort by priority', tasks_path(sort_priority: 'true'), class: 'btn btn-outline-primary'%></p>
 <%= paginate @tasks %>

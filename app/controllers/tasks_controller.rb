@@ -7,6 +7,9 @@ class TasksController < ApplicationController
       @tasks = Task.order('deadline DESC').page(params[:page])
     elsif params[:term]
       @tasks = Task.where('tittle LIKE ? or statuses LIKE ? ', "%#{params[:term]}%", "%#{params[:term]}%").order('id ASC').page(params[:page])
+    elsif params[:sort_priority]
+      # status is column that is holding priority High,medium and finally low
+      @tasks = Task.order('status DESC').page(params[:page])
     else
       @tasks = Task.order('created_at DESC').page(params[:page])
     end
