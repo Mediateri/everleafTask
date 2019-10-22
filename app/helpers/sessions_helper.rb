@@ -6,4 +6,8 @@ module SessionsHelper
   def logged_in?
     current_user.present?
   end
+
+  def authorize
+    redirect_to new_session_path unless current_user
+  end
 end
