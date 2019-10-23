@@ -35,6 +35,9 @@
                     <%= link_to "Users List",admin_users_path , class: "nav-link" %>
                   </li>
                 <% end %>
+                <li class="nav-item">
+                <%= link_to "Tasks List",tasks_path , class: "nav-link" %>
+              </li>
               <li>
                 <%= link_to "Logout", session_path(current_user.id), class: "nav-link", method: :delete %>
               </ul>
