@@ -7,7 +7,7 @@
         <div class="card-body">
           <p><%= task.tittle %>
           <%= task.content %></p>
-          <p><%= link_to 'Show', task, class: 'btn btn-primary' %>
+          <p><%= link_to 'Show', task, class: 'btn btn-info' %>
           <%= link_to 'Edit', edit_task_path(task), class: "btn btn-warning" %>
           <%= link_to 'Destroy', task, method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?' } %></p>
         </div>

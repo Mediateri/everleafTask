@@ -1,3 +1,4 @@
+<div class="jumbotron">
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -10,7 +11,7 @@
   <%= @user.email %>
 </p>
 
-<p> <h2> Tasks Submitted By This User</h2>
+<p> <h6> Tasks Submitted By This User</h6>
 <% @tasks.each do |task| %>
 <% if @user.id == task.user_id %>
 <ul>
@@ -21,5 +22,5 @@
  <% end %>
 <% end %>
 </p>
-
-<%= link_to 'Edit', edit_admin_user_path(@user) %> 
+<%= link_to 'Edit', edit_admin_user_path(@user), class: "btn btn-outline-warning" %> 
+</div>
