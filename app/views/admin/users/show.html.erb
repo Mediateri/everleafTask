@@ -10,9 +10,16 @@
   <%= @user.email %>
 </p>
 
-<p>
-  <strong>Password:</strong>
-  <%= @user.password %>
+<p> <h2> Tasks Submitted By This User</h2>
+<% @tasks.each do |task| %>
+<% if @user.id == task.user_id %>
+<ul>
+<li>
+ Name:<%= task.tittle + '       ' %> Content:<%= task.content %><br/>
+</li>
+</ul>
+ <% end %>
+<% end %>
 </p>
 
-<%= link_to 'Edit', edit_user_path(@user) %> 
+<%= link_to 'Edit', edit_admin_user_path(@user) %> 

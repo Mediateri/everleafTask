@@ -1,4 +1,4 @@
 
-   User.create(email: 'n@gmail.com',  password: '123456', name: "meddy")
+   User.create(email: 'admin@gmail.com',  password: '123456', name: "meddy", role: 'true' )
 
 

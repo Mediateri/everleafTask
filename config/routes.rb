@@ -4,6 +4,5 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :users
   end
-  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   resources :tasks
 end
