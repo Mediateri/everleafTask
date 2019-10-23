@@ -23,8 +23,14 @@
   </div>
 
   <div class="field">
-    <%= form.label :password %>
+    <%= form.label :passwords %>
     <%= form.text_field :password, class: "form-control" %>
+  </div>
+  <div class="field">
+  <% if current_user.present?  %>
+      <%= form.label :Role %>
+      <%= form.radio_button :role, 'true' %> Admin  <%= form.radio_button :role, 'false' %> User<br />
+    <% end %>
   </div>
   <div class="actions">
     <%= form.submit class: "btn btn-primary" %>
