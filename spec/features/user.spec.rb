@@ -2,7 +2,7 @@
 require 'rails_helper'
 RSpec.feature "user management function", type: :feature do
  background do
-   User.create!(name: "k", email: 'meddy@gmail.Com',  password: '123456')
+   User.create!(name: "k", email: 'meddy@gmail.Com',  password: '123456', role: 'true')
    visit  root_path
    #click_on 'Login'
    fill_in  'Email' ,  with: 'meddy@gmail.Com'
@@ -36,6 +36,22 @@ RSpec.feature "user management function", type: :feature do
    
     assert @user.destroy
  end
+ scenario "test task search by atached labels " do
+  Label.create!(labeler: 'label1')
+  Label.create!(labeler: 'label2')
+  Label.create!(labeler: 'label3')
+  Task.first
+  @label1 = Label.first
+  @label2 = Label.last
+  @task.labels = [@label1,@label2]
+  @task.save
+  @tas = Task.joins(:labels)
+  .where("labels.title LIKE ?", "label1")
+  assert @tas
+
+end
+
+
 end
 
 

@@ -18,5 +18,14 @@
   <strong>Statuse:</strong>
   <%= @task.statuses %>
 </p>
+<p> <h4> Labels attached to this task</h4>
+<% @task.labels.each do |label| %>
+<ul>
+<li class = "user-tasks">
+Title:<%= label.labeler + '       ' %> 
+</li>
+</ul>
+<% end %>
+</p>
 <%= link_to 'Back', tasks_path, class: "btn btn-outline-primary" %>
 </div>

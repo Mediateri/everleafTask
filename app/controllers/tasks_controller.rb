@@ -6,7 +6,7 @@ class TasksController < ApplicationController
     if params[:sort_expired]
       @tasks = Task.order('deadline DESC').page(params[:page])
     elsif params[:term]
-      @tasks = Task.where('tittle LIKE ? or statuses LIKE ? ', "%#{params[:term]}%", "%#{params[:term]}%").order('id ASC').page(params[:page])
+      @tasks = Task.joins(:labels).where('tittle LIKE ? or statuses LIKE ? or labels.labeler LIKE ?', "%#{params[:term]}%", "%#{params[:term]}%", "%#{params[:term]}%").order('id ASC').page(params[:page])
     elsif params[:sort_priority]
       # status is column that is holding priority High,medium and finally low
       @tasks = Task.order('status DESC').page(params[:page])
@@ -54,6 +54,6 @@ class TasksController < ApplicationController
     end
 
     def task_params
-      params.require(:task).permit(:tittle, :content, :deadline, :term, :status, :statuses, :admin)
+      params.require(:task).permit(:tittle, :content, :deadline, :term, :status, :statuses, :admin, label_ids:[])
     end
 end

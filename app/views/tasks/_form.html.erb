@@ -33,6 +33,16 @@
     <%= form.radio_button :statuses, 'Not_started' %> Not_started  <%= form.radio_button :statuses, 'Undertaking' %> Undertaking <%= form.radio_button :statuses, 'Completed' %> Completed<br />
   </p>
 </div>
+<p>
+<div class="field">
+<%= form.label :Labels %>
+<%Label.all.each do |label| %>
+  <% if label.user_id == current_user.id || label.user_id.blank?%>
+    <%=form.check_box :label_ids, {multiple: true, checked: label[:checked], disabled: label[:disabled], include_hidden: false }, label[:id] %>
+    <label ><%= label.labeler %></label>
+  <%end%>
+<% end %>
+</div> </p>
   <div class="actions">
     <%= form.submit class: "btn btn-primary" %>
   </div>
