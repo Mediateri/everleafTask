@@ -37,10 +37,12 @@ RSpec.feature "user management function", type: :feature do
     assert @user.destroy
  end
  scenario "test task search by atached labels " do
-  Label.create!(labeler: 'label1')
-  Label.create!(labeler: 'label2')
-  Label.create!(labeler: 'label3')
-  Task.first
+  User.create!(name: 'paul', email: 'paul@gmail.com', password: '123456')
+  user=User.first
+  Label.create!(labeler: 'label1', user_id: user.id)
+  Label.create!(labeler: 'label2', user_id: user.id)
+  Label.create!(labeler: 'label3', user_id: user.id)
+  @task = Task.new(tittle: "huh", content: 'hy', user_id: user.id)
   @label1 = Label.first
   @label2 = Label.last
   @task.labels = [@label1,@label2]
