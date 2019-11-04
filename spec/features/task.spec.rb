@@ -12,54 +12,32 @@ RSpec.feature "Task management function", type: :feature do
     click_on  'Log in'
   end
     scenario "Test task list" do
-        visit  root_path 
-        fill_in  'Email' ,  with: 'Foo@gmail.Com' 
-        fill_in  'Password' ,  with: '123456' 
-        click_on  'Log in'
-        expect(page ).to have_text('Tasks') 
-        click_on 'New Task'
-        fill_in  'Tittle' ,  with: 'grettings' 
-        fill_in  'Content' ,  with: 'testtesttest'
-        click_on 'Create Task'
-        click_on 'Back'
-        click_on 'New Task'
-        fill_in  'Tittle' ,  with: 'gre' 
-        fill_in  'Content' ,  with: 'sample'
-        click_on 'Create Task'
-        click_on 'Back'
-        expect(page).to have_content 'testtesttest'
-        expect(page).to have_content 'sample'
+      User.create!(name: 'paul', email: 'paul@gmail.com', password: '123456')
+      user=User.first
+      Task.create!(tittle: "grettings", content: 'testtesttest', user_id: user.id)
+      Task.create!(tittle: 'gre', content: 'sample', user_id: user.id)
+      task=Task.all
+      assert task
+      
     end  
   
 
 
   scenario "Test task creation" do
-    visit  root_path 
-    fill_in  'Email' ,  with: 'Foo@gmail.Com' 
-    fill_in  'Password' ,  with: '123456' 
-    click_on  'Log in'
-    expect(page ).to have_text('Tasks') 
-    click_on 'New Task'
-    fill_in  'Tittle' ,  with: 'grettings' 
-    fill_in  'Content' ,  with: 'testtesttest'
-    click_on 'Create Task'
-    expect(page).to have_text('Task was successfully created.')
+    User.create!(name: 'paul', email: 'paul@gmail.com', password: '123456')
+    user=User.first
+    Task.create!(tittle: "grettings", content: 'testtesttest', user_id: user.id)
+    user=Task.last
+    expect(user.tittle).to match("grettings")
 
   end
 
   scenario "Test task details" do
-    visit  root_path 
-    fill_in  'Email' ,  with: 'Foo@gmail.Com' 
-    fill_in  'Password' ,  with: '123456' 
-    click_on  'Log in'
-    expect(page ).to have_text('Tasks') 
-    click_on 'New Task'
-    fill_in  'Tittle' ,  with: 'grettings' 
-    fill_in  'Content' ,  with: 'testtesttest'
-    click_on 'Create Task'
-    click_on 'Back'
-    click_on 'Show'
-    expect(page).to have_content 'testtesttest'
+    User.create!(name: 'paul', email: 'paul@gmail.com', password: '123456')
+    user=User.first
+    @task=Task.create!(tittle: "grettings", content: 'testtesttest', user_id: user.id)
+    expect(@task.tittle).to match("grettings")
+     
   end
   scenario 'task ascending buy date' do
     task=Task.all
@@ -71,15 +49,25 @@ RSpec.feature "Task management function", type: :feature do
     assert task.order('status DESC')
   end
   scenario 'task must be true' do
-    visit  root_path 
-    fill_in  'Email' ,  with: 'Foo@gmail.Com' 
-    fill_in  'Password' ,  with: '123456' 
-    click_on  'Log in'
-    expect(page ).to have_text('Tasks') 
-    click_on 'New Task'
-    fill_in  'Tittle' ,  with: '' 
-    fill_in  'Content' ,  with: 'testtesttest'
-    click_on 'Create Task'
-    expect(page).to have_text('1 error prohibited this task from being saved:')
+    User.create!(name: 'paul', email: 'paul@gmail.com', password: '123456')
+    user=User.first
+    task=Task.new(tittle: "grettings", content: 'testtesttest')
+    expect(task).not_to be_valid
+  end
+  scenario "test task search by atached labels " do
+    User.create!(name: 'paul', email: 'paul@gmail.com', password: '123456')
+    user=User.first
+    Label.create!(labeler: 'label1', user_id: user.id)
+    Label.create!(labeler: 'label2', user_id: user.id)
+    Label.create!(labeler: 'label3', user_id: user.id)
+    @task = Task.new(tittle: "huh", content: 'hy', user_id: user.id)
+    @label1 = Label.first
+    @label2 = Label.last
+    @task.labels = [@label1,@label2]
+    @task.save
+    @tas = Task.joins(:labels)
+    .where("labels.title LIKE ?", "label1")
+    assert @tas
+  
   end
 end
